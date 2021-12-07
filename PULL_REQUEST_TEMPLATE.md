@@ -1,3 +1,7 @@
+<!-- Content enclosed in HTML comments will not be rendered in the Markdown, and are intended to help guide you -->
+
+<!-- This PR template is inherited from https://github.com/opendoor-labs/.github -->
+
 ## Context
 
 > Why are you making this change?
@@ -8,12 +12,15 @@
 
 ## Summary of Changes
 
-> Provide a short description or bulleted list of changes made in this PR.
+<!-- Provide a short description or bulleted list of changes made in this PR. -->
 
 ## Test Plan
 
-> How have you tested this change, and what further testing will be done? What’s the riskiest part of this PR? How will you test and monitor that?
+<!-- How have you tested this change, and what further testing will be done? What’s the riskiest part of this PR? How will you test and monitor that? -->
 
 ## Documentation
 
-> Have you commented on parts of this PR that may be confusing to future readers who lack context? If this changes any workflows, have you updated the appropriate READMEs?
+<!-- This is a task list. To mark a task as complete, use [x]. See https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#task-lists -->
+
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to external documentation if necessary (READMEs, Confluence, etc.)

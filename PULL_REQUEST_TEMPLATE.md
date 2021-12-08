@@ -1,7 +1,5 @@
 <!-- Content enclosed in HTML comments will not be rendered in the Markdown, and are intended to help guide you -->
 
-<!-- This PR template is inherited from https://github.com/opendoor-labs/.github -->
-
 ## Context
 
 > Why are you making this change?
@@ -24,3 +22,5 @@
 
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to external documentation if necessary (READMEs, Confluence, etc.)
+
+<!-- This PR template is inherited from https://github.com/opendoor-labs/.github -->

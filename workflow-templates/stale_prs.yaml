@@ -1,20 +1,18 @@
+# This Github Action was added from https://github.com/opendoor-labs/.github/tree/master/workflow-templates.
+
 # https://github.com/actions/stale
 
 # This action labels PRs as Stale after they have been open for X days, and closes Stale PRs after Y days. X and Y are configured below.
-# This action could also perform similar steps for Issues, but that functionality has not yet been enabled in this workflow template.
 name: 'Close stale PRs'
 
 permissions:
   pull-requests: write
 
-# Individual repos can override this cron schedule https://docs.github.com/en/actions/learn-github-actions/using-starter-workflows
+# Individual repos can override this cron schedule
 on:
   schedule:
-    # TODO: change to once-every-Sunday cron schedule after this is validated
     # every Sunday at 1:20AM PST
-    # - cron: '20 9 * * 0'
-    # every day at 1:20AM PST
-    - cron: '20 9 * * *'
+    - cron: '20 9 * * 0'
 
 jobs:
   stale_prs:

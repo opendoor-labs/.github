@@ -1,0 +1,3 @@
+This directory holds starter workflows — essentially, Github actions that can be leveraged in multiple repositories to promote consistency across the entire organization in a DRY manner. They must reside in this `.github` repository in a directory named `workflow-templates`. Ref https://docs.github.com/en/actions/learn-github-actions/creating-starter-workflows-for-your-organization for additional information about how to add a new starter workflow.
+
+After adding a new starter workflow to this directory, you'll most likely want to use it in a different repository. See https://docs.github.com/en/actions/learn-github-actions/using-starter-workflows for how to accomplish this.

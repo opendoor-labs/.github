@@ -1,0 +1,4 @@
+{
+  "name": "Stale PRs",
+  "description": "Labels PRs as Stale after 60 days of inactivity, closes PRs if they are Stale for 30 days"
+}

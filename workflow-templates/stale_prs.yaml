@@ -1,0 +1,34 @@
+# https://github.com/actions/stale
+
+# This action labels PRs as Stale after they have been open for X days, and closes Stale PRs after Y days. X and Y are configured below.
+# This action could also perform similar steps for Issues, but that functionality has not yet been enabled in this workflow template.
+name: 'Close stale PRs'
+
+permissions:
+  pull-requests: write
+
+# Individual repos can override this cron schedule https://docs.github.com/en/actions/learn-github-actions/using-starter-workflows
+on:
+  schedule:
+    # TODO: change to once-every-Sunday cron schedule after this is validated
+    # every Sunday at 1:20AM PST
+    # - cron: '20 9 * * 0'
+    # every day at 1:20AM PST
+    - cron: '20 9 * * *'
+
+jobs:
+  stale_prs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v4.1.0
+        # https://github.com/actions/stale#all-options
+        with:
+          stale-pr-message: '⚠️ This PR has been labeled as Stale after 60 days of inactivity, and will be automatically closed in 30 days. Questions / concerns? Please reach out to your friendly neighborhood [#developer-experience](https://opendoor.slack.com/archives/C6PGFGTV0) team.'
+          # PRs with no activity for 60 days will be labeled as Stale
+          days-before-pr-stale: 60
+          # PRs that are Stale for 30 days will be closed
+          days-before-pr-close: 30
+          # Whether to skip the action for draft PRs
+          exempt-draft-pr: false
+          # Delete the branch after closing a Stale PR
+          delete-branch: false

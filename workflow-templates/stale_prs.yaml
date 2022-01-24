@@ -6,6 +6,7 @@
 name: 'Close stale PRs'
 
 permissions:
+  issues: write
   pull-requests: write
 
 # Individual repos can override this cron schedule

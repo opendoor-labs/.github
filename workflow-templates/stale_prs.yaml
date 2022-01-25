@@ -32,8 +32,8 @@ jobs:
           exempt-draft-pr: false
           # Delete the branch after closing a Stale PR
           delete-branch: false
-          # comma separated list, e.g. 'PoC,Never Stale'. If a PR has any of these labels, it will be ignored by this action.
+          # comma separated list. If a PR has any of these labels, it will be ignored by this action.
           # PoC is applied by Snyk PRs (https://github.com/opendoor-labs/code/labels/PoC)
-          exempt-pr-labels: 'PoC'
+          exempt-pr-labels: 'PoC,Never Stale'
           # Max number of operations per run
           operations-per-run: 50

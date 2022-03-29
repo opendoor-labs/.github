@@ -23,7 +23,7 @@ jobs:
         # https://github.com/actions/stale#all-options
         with:
           # Update this message if you change `days-before-pr-stale`, `days-before-pr-close` or `exempt-pr-labels`
-          stale-pr-message: "⚠️ This PR has been labeled as Stale after 60 days of inactivity, and will be automatically closed in 30 days. If you would like to keep this PR around for longer, you can add the 'Never Stale' label.\n\nQuestions / concerns? Please reach out to your friendly neighborhood [#developer-experience](https://opendoor.slack.com/archives/C6PGFGTV0) team."
+          stale-pr-message: "⚠️ This PR has been labeled as Stale after 60 days of inactivity, and will be automatically closed in 30 days. If you would like to keep this PR around for longer, you can add the 'Never Stale' label.\n\nQuestions / concerns? Please reach out to your friendly neighborhood [#infra](https://opendoor.slack.com/archives/C6PGFGTV0) team."
           # PRs with no activity for 60 days will be labeled as Stale
           days-before-pr-stale: 60
           # PRs that are Stale for 30 days will be closed

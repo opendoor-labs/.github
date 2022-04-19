@@ -15,6 +15,7 @@
 ## Test Plan
 
 <!-- How have you tested this change, and what further testing will be done? What’s the riskiest part of this PR? How will you test and monitor that? -->
+<!-- If you PR changes a Terraform file, include the terraform plan output or link before asking for code review. -->
 
 ## Checklist
 

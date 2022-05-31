@@ -2,15 +2,7 @@
 
 ## Context
 
-> Why are you making this change?
-
-## Origin
-
-> What team/individual requested this change? Please link to a JIRA ticket or other documentation if applicable. If you identified this issue yourself please write "Me" (and still link to any additional context if it exists).
-
-## Summary of Changes
-
-<!-- Provide a short description or bulleted list of changes made in this PR. -->
+> What changes are being made? Why are you making this change? Provide a short description or bulleted list.
 
 ## Test Plan
 

@@ -1,15 +1,15 @@
 <!-- Content enclosed in HTML comments will not be rendered in the Markdown, and are intended to help guide you -->
 
-# Context
+## Context
 
 > What changes are being made? Why are you making this change? Provide a short description or bulleted list.
 
-# Test Plan
+## Test Plan
 
 <!-- How have you tested this change, and what further testing will be done? What’s the riskiest part of this PR? How will you test and monitor that? -->
 <!-- If your PR changes a Terraform file, include the terraform plan output or link before asking for code review. -->
 
-# Checklist
+## Checklist
 
 <!-- This is a checklist. To mark an item as complete, use [x]. See https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#task-lists -->
 

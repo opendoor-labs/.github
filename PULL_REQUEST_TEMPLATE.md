@@ -4,8 +4,6 @@
 
 > What changes are being made? Why are you making this change? Provide a short description or bulleted list.
 
-<!-- Add a `[PROJECT-####]` annotation here (e.g. `[INFRA-12345]`) to automatically link this PR to the corresponding JIRA ticket -->
-
 # Test Plan
 
 <!-- How have you tested this change, and what further testing will be done? What’s the riskiest part of this PR? How will you test and monitor that? -->

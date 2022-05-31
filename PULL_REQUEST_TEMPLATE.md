@@ -2,9 +2,9 @@
 
 # Context
 
-<!-- Why are you making this change? -->
-<!-- Provide context along with a short description or bulleted list of changes made in this PR. -->
-<!-- Add a `[TEAM-####]` annotation here `[INFRA-12345]` to automatically link this PR to the corresponding JIRA ticket -->
+> What changes are being made? Why are you making this change? Provide a short description or bulleted list.
+
+<!-- Add a `[PROJECT-####]` annotation here (e.g. `[INFRA-12345]`) to automatically link this PR to the corresponding JIRA ticket -->
 
 # Test Plan
 

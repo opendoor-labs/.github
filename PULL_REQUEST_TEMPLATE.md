@@ -8,6 +8,11 @@
 
 <!-- How have you tested this change, and what further testing will be done? What’s the riskiest part of this PR? How will you test and monitor that? -->
 <!-- If your PR changes a Terraform file, include the terraform plan output or link before asking for code review. -->
+<!-- If you're adding a SQL query, please paste the before/after EXPLAIN ANALYZE plan here. For visual changes, please include a screenshot or recording if possible. -->
+
+## Mitigation
+
+<!-- Please estimate the potential impact of your change and how we can roll back or mitigate any issues that may arise. Are there feature flags or monitoring in place? -->
 
 ## Checklist
 

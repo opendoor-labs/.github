@@ -1,0 +1,4 @@
+{
+  "name": "Red Diff Party",
+  "description": "Automatically post merged PRs to #red-diff-party when they are mostly deletions"
+}

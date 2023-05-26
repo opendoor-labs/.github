@@ -1,0 +1,89 @@
+---
+name: Red diff party
+
+# USAGE GUIDE:
+# To enroll your repository into the #red-diff-party Slack channel,
+# simply add this Github Actions workflow to your repository, and then
+# set the `SLACK_RED_DIFF_PARTY_WEBHOOK_URL` secret at the repository-level
+# to the value stored in Vault at the path `secret/ci/infra/red-diff-party-webhook-url`
+
+on:
+  pull_request:
+    types:
+      - closed
+
+# all scripts are just inlined here so we don't have to perform a lengthy checkout
+jobs:
+  red-diff-party-prereq:
+    if: github.event.pull_request.merged && github.event.pull_request.base.ref == 'master'
+    name: red-diff-party-prereq
+    runs-on: runner-sm
+    timeout-minutes: 15
+    # requirements here: a small image with `bc` installed
+    container:
+      image: busybox:latest
+    outputs:
+      red-diff-party-payload: ${{ steps.compute-red-diff-party-payload.outputs.payload }}
+    steps:
+      - name: 'Compute #red-diff-party payload'
+        id: compute-red-diff-party-payload
+        shell: sh
+        run: |
+          set -x
+
+          if [[ "$PR_TITLE" = Revert* ]]; then
+            echo "Skipping because this is a revert PR"
+            exit 0
+          fi
+
+          if [[ "$PR_DELETIONS" -eq "0" ]]; then
+            echo "Skipping due to no lines being deleted"
+            exit 0
+          fi
+
+          if [[ "$RED_DIFF_MIN_LINES" -gt "$PR_DELETIONS" ]]; then
+            echo "Skipping due to not meeting min line count deletion threshold"
+            exit 0
+          fi
+
+          lines_changed=$(($PR_ADDITIONS + $PR_DELETIONS))
+          ratio=$(echo "scale=2; $PR_DELETIONS/$lines_changed" | bc -l)
+
+          if [[ $(echo "$ratio > $RED_DIFF_MIN_RATIO" | bc -l) -eq "0" ]]; then
+            echo "Skipping due to min line deletion ratio not being met"
+            exit 0
+          fi
+
+          # division by 1 strips the decimal
+          percent=$(echo "$ratio*100/1" | bc | sed -e 's/\.$//' | xargs -I {} echo "{}%")
+
+          # TODO: comma separate the thousands here; but printf is only in bash shells, and busybox only has sh. Why is this so hard?!
+          # formatted_line_deletion_count=$(printf "%'d" "$PR_DELETIONS")
+          echo "payload={ \"repo\": \"$REPO_NAME\", \"pr_link\": \"$PR_URL\", \"pr_title\": \"$PR_TITLE\", \"num_deletions\": \"-$PR_DELETIONS\", \"pr_author\": \"$PR_AUTHOR\", \"percent\": \"$percent\" }" >> "$GITHUB_OUTPUT"
+        env:
+          PR_ADDITIONS: ${{ github.event.pull_request.additions }}
+          PR_DELETIONS: ${{ github.event.pull_request.deletions }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          REPO_NAME: ${{ github.repository }}
+          RED_DIFF_MIN_RATIO: 0.8
+          RED_DIFF_MIN_LINES: 100
+
+  maybe-notify-red-diff-party:
+    if: needs.red-diff-party-prereq.outputs.red-diff-party-payload != ''
+    name: maybe-notify-red-diff-party
+    needs:
+      - red-diff-party-prereq
+    runs-on: runner-sm
+    timeout-minutes: 15
+    # requirements here: a small image with `node` installed
+    container:
+      image: bitnami/git:latest
+    steps:
+      - name: 'Maybe notify #red-diff-party'
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: ${{ needs.red-diff-party-prereq.outputs.red-diff-party-payload }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_RED_DIFF_PARTY_WEBHOOK_URL }}

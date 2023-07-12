@@ -21,6 +21,5 @@
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to external documentation if necessary (READMEs, Confluence, etc.)
 - [ ] I have checked that other PRs this PR depends on have already been deployed.
-- [ ] I can confirm that either A) this PR does not cause a DB schema change, so I can proceed safely, or B) I have read the [data contract schema change run book](https://opendoor.atlassian.net/wiki/spaces/RDS/pages/2338488364/Data+Contract+schema+change+run+book) and have followed all the steps outlined in the wiki to ensure that the change aligns with the [data contract](https://docs.google.com/document/d/1g_ZZ8TU58Dh2Fn_6aNHktBUNdnBtYNuOyu3GY-kGHnk/edit#heading=h.o2ce6n1q3gpb).
 
 <!-- This PR template is inherited from https://github.com/opendoor-labs/.github -->

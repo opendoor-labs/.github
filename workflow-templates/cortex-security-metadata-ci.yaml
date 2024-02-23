@@ -1,0 +1,12 @@
+---
+name: CI — Cortex Security Metadata
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  cortex-security-metadata:
+    uses: opendoor-labs/security-tools/.github/workflows/cortex-security-metadata-ci.yaml@master

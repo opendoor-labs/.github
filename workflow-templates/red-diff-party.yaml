@@ -14,14 +14,32 @@ on:
 
 # all scripts are just inlined here so we don't have to perform a lengthy checkout
 jobs:
+  login-to-ecr:
+    name: login-to-ecr
+    runs-on: runner-sm-ng
+    steps:
+      - name: Login to ECR
+        id: login-ecr
+        uses: opendoor-labs/get-ecr-credentials-action@v1.0.0
+        with:
+          mask-password: false
+    outputs:
+      registry: ${{ steps.login-ecr.outputs.registry }}
+      docker_username: ${{ steps.login-ecr.outputs.docker_username }}
+      docker_password: ${{ steps.login-ecr.outputs.docker_password }}
   red-diff-party-prereq:
     if: github.event.pull_request.merged && github.event.pull_request.base.ref == 'master'
     name: red-diff-party-prereq
-    runs-on: runner-sm
+    runs-on: runner-sm-ng
+    needs:
+      - login-to-ecr
     timeout-minutes: 15
     # requirements here: a small image with `bc` installed
     container:
-      image: busybox:latest
+      image: ${{ needs.login-to-ecr.outputs.registry }}/remote-cache/dockerhub/library/busybox:latest
+      credentials:
+        username: ${{ needs.login-to-ecr.outputs.docker_username }}
+        password: ${{ needs.login-to-ecr.outputs.docker_password }}
     outputs:
       red-diff-party-payload: ${{ steps.compute-red-diff-party-payload.outputs.payload }}
     steps:
@@ -75,11 +93,16 @@ jobs:
     name: maybe-notify-red-diff-party
     needs:
       - red-diff-party-prereq
-    runs-on: runner-sm
+    runs-on: runner-sm-ng
+    needs:
+      - login-to-ecr
     timeout-minutes: 15
     # requirements here: a small image with `node` installed
     container:
-      image: bitnami/git:latest
+      image: ${{ needs.login-to-ecr.outputs.registry }}/remote-cache/dockerhub/bitnami/git:latest
+      credentials:
+        username: ${{ needs.login-to-ecr.outputs.docker_username }}
+        password: ${{ needs.login-to-ecr.outputs.docker_password }}
     steps:
       - name: 'Maybe notify #red-diff-party'
         uses: slackapi/slack-github-action@v1.24.0

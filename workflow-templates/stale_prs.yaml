@@ -17,7 +17,7 @@ on:
 
 jobs:
   stale_prs:
-    runs-on: ubuntu-latest
+    runs-on: runner-sm-ng
     steps:
       - uses: actions/stale@v4.1.0
         # https://github.com/actions/stale#all-options

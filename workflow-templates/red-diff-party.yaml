@@ -93,9 +93,8 @@ jobs:
     name: maybe-notify-red-diff-party
     needs:
       - red-diff-party-prereq
-    runs-on: runner-sm-ng
-    needs:
       - login-to-ecr
+    runs-on: runner-sm-ng
     timeout-minutes: 15
     # requirements here: a small image with `node` installed
     container:

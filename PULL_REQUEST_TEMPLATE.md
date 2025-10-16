@@ -24,3 +24,5 @@
 - [ ] I can confirm that if this PR introduces a DB schema change, I have read and followed all the steps outlined in the [Data Contract](https://docs.google.com/document/d/1g_ZZ8TU58Dh2Fn_6aNHktBUNdnBtYNuOyu3GY-kGHnk/edit#heading=h.o2ce6n1q3gpb).
 
 <!-- This PR template is inherited from https://github.com/opendoor-labs/.github -->
+
+@claude Please review this PR

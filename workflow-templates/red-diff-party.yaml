@@ -16,11 +16,15 @@ on:
 jobs:
   login-to-ecr:
     name: login-to-ecr
-    runs-on: runner-sm-ng
+    runs-on: arm-isolated-sm
+    # Isolated scale sets require a job container even when the job has no image
+    # of its own; the multi-arch runner image is the no-payload choice.
+    container:
+      image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/actions-runner:v1.0.6
     steps:
       - name: Login to ECR
         id: login-ecr
-        uses: opendoor-labs/get-ecr-credentials-action@v1.0.0
+        uses: opendoor-labs/get-ecr-credentials-action@v2.0.0
         with:
           mask-password: false
     outputs:
@@ -30,7 +34,7 @@ jobs:
   red-diff-party-prereq:
     if: github.event.pull_request.merged && github.event.pull_request.base.ref == 'master'
     name: red-diff-party-prereq
-    runs-on: runner-sm-ng
+    runs-on: arm-isolated-sm
     needs:
       - login-to-ecr
     timeout-minutes: 15
@@ -94,7 +98,7 @@ jobs:
     needs:
       - red-diff-party-prereq
       - login-to-ecr
-    runs-on: runner-sm-ng
+    runs-on: arm-isolated-sm
     timeout-minutes: 15
     # requirements here: a small image with `node` installed
     container:

@@ -5,8 +5,7 @@ After adding a new starter workflow to this directory, you'll most likely want t
 ## Runner requirements
 
 Every starter workflow runs on the isolated ARC runners (`arm-isolated-{sm,md,lg}`), where
-workflow steps execute inside a job pod the Kubernetes API creates. The docker-in-docker
-labels (`runner-*-ng`, `arm-runner-*`) are retired; do not use them in new templates.
+workflow steps execute inside a job pod the Kubernetes API creates.
 
 Each job must declare a `container:` — the isolated scale sets set
 `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER=true`, and a job without one never starts. For a job

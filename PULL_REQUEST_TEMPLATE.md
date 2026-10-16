@@ -22,6 +22,7 @@
 - [ ] I have made corresponding changes to external documentation if necessary (READMEs, Confluence, etc.)
 - [ ] I have checked that other PRs this PR depends on have already been deployed.
 - [ ] I can confirm that if this PR introduces a DB schema change, I have read and followed all the steps outlined in the [Data Contract](https://docs.google.com/document/d/1g_ZZ8TU58Dh2Fn_6aNHktBUNdnBtYNuOyu3GY-kGHnk/edit#heading=h.o2ce6n1q3gpb).
+- [ ] If AI wrote this code, I read it
 
 <!-- This PR template is inherited from https://github.com/opendoor-labs/.github -->
 

@@ -20,7 +20,7 @@ jobs:
     # Isolated scale sets require a job container even when the job has no image
     # of its own; the multi-arch runner image is the no-payload choice.
     container:
-      image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/actions-runner:v1.0.6
+      image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/actions-runner:v1.0.9
     steps:
       - name: Login to ECR
         id: login-ecr

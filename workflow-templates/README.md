@@ -14,7 +14,7 @@ that needs no image of its own, use the multi-arch runner image:
 ```yaml
 runs-on: arm-isolated-sm
 container:
-  image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/actions-runner:v1.0.6
+  image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/actions-runner:v1.0.9
 ```
 
 Pull container images from the ECR pull-through cache

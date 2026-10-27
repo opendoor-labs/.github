@@ -9,13 +9,16 @@ workflow steps execute inside a job pod the Kubernetes API creates.
 
 Each job must declare a `container:` — the isolated scale sets set
 `ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER=true`, and a job without one never starts. For a job
-that needs no image of its own, use the multi-arch runner image:
+that needs no image of its own, use the multi-arch `job-runner` image:
 
 ```yaml
 runs-on: arm-isolated-sm
 container:
-  image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/actions-runner:v1.0.9
+  image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/job-runner:v1.0.2
 ```
+
+It carries git, gh, jq, yq, the AWS CLI and psql, but no Docker CLI or daemon, so a job that
+runs `docker` needs an image of its own.
 
 Pull container images from the ECR pull-through cache
 (`365342630876.dkr.ecr.us-east-1.amazonaws.com/remote-cache/...`), not from a public

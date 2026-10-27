@@ -19,9 +19,9 @@ jobs:
   stale_prs:
     runs-on: arm-isolated-sm
     # Isolated scale sets require a job container even when the job has no image
-    # of its own; the multi-arch runner image is the no-payload choice.
+    # of its own; job-runner is the no-payload choice.
     container:
-      image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/actions-runner:v1.0.9
+      image: 365342630876.dkr.ecr.us-east-1.amazonaws.com/job-runner:v1.0.2
     steps:
       - uses: actions/stale@v4.1.0
         # https://github.com/actions/stale#all-options
